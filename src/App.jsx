@@ -30,6 +30,22 @@ export function FacebookIcon({ className }) {
   );
 }
 
+const entries = [
+  {
+    date: "2025 - Present",
+    title: "Freelance Developer"
+  },
+  {
+    date: "2024 - Present",
+    title: "Bachelor of Science in Information System"
+  },
+];
+
+const techStack = [
+  {title: "React"}, {title: "Tailwind CSS"}, {title: "Godot Engine"}, {title: "C#"}, {title: "Java"}, {title: "C++"}, {title: "Firebase"}, {title: "HTML"},
+  {title: "CSS"}, {title: "Javascript"}, {title: "SQL"}, 
+];
+
 function App() {
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -108,7 +124,7 @@ function App() {
 
       {/*Home section*/}
       <div id="home" className="flex items-center justify-center p-8">
-        <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 items-center border-l-2 border-gray-400 dark:border-gray-700 pl-10 relative">
+        <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 items-center border-l-2 border-gray-400 dark:border-gray-700 pl-10 relative">
           
 
           <div className="order-2 md:order-1">
@@ -123,18 +139,18 @@ function App() {
             </p>
 
             {/* Buttons */}
-            <div className="flex gap-8 mb-4">
+            <div className="flex gap-5 mb-4">
               <a href="#contact" className="flex items-center gap-2 bg-blue-800 hover:bg-blue-900 transition-colors text-white font-semibold text-sm px-5 py-2.5 rounded-md cursor-pointer">Let's Connect <ArrowRight size={16}/></a>
-              <a  className="flex items-center gap-2 border border-gray-300 dark:border-gray-600 hover:border-gray-500 dark:hover:border-gray-400 transition-colors text-gray dark:text-gray-200 font-semibold text-sm px-5 py-2.5 rounded-md cursor-pointer">View Resume <FileText size={20}/></a>
+              <a target='_blank' href='https://canva.link/fnmcilnwm0xqq1i' className="flex items-center gap-2 border border-gray-300 dark:border-gray-600 hover:border-gray-500 dark:hover:border-gray-400 transition-colors text-gray dark:text-gray-200 font-semibold text-sm px-5 py-2.5 rounded-md cursor-pointer">View Resume <FileText size={20}/></a>
             </div>
 
             {/* Social Links */}
             <div>
               <ul className="flex gap-5 items-center mt-3">
-                <li><a href="https://github.com/Chicoffee"><GithubIcon className="w-7 h-7"/></a></li>
-                <li><a href="www.linkedin.com/in/john-lenard-fetalco-b67303381"><LinkedinIcon className="w-7 h-7"/></a></li>
-                <li><a href="https://www.facebook.com/nard.fe"><FacebookIcon className="w-7 h-7"/></a></li>
-                <li><a href="mailto:fetalcojohnlenard@gmail.com "><Mail size={28}/></a></li>
+                <li><a target='_blank' href="https://github.com/Chicoffee"><GithubIcon className="w-7 h-7"/></a></li>
+                <li><a target='_blank' href="www.linkedin.com/in/john-lenard-fetalco-b67303381"><LinkedinIcon className="w-7 h-7"/></a></li>
+                <li><a target='_blank' href="https://www.facebook.com/nard.fe"><FacebookIcon className="w-7 h-7"/></a></li>
+                <li><a target='_blank' href="mailto:fetalcojohnlenard@gmail.com "><Mail size={28}/></a></li>
               </ul>
             </div>
 
@@ -175,10 +191,47 @@ function App() {
         </div>
       </div>
 
-      <div id="about" className="min-h-screen">
+      {/* About Section */}
+      <div id="about" className="w-full flex flex-col items-center justify-center gap-16 p-8">
         {/* Career Background */}
+        <div className="w-full max-w-7xl">
+          <div className="flex justify-between">
+            <h1 className="text-2xl font-extrabold dark:text-white mb-6">Career Background</h1>
+            <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500">Full History<ArrowRight size={16}/></a>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {entries.map((entry, i) => (
+              <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:gap-4 border-t-2 border-gray-400 dark:border-gray-700 pt-4">
+                <span className="text-sm font-bold text-gray-800 dark:text-gray-200 w-40 shrink-0">
+                  {entry.date}
+                </span>
+                <span className="text-sm font-bold text-gray-800 dark:text-gray-200 sm:text-right sm:flex-1">{entry.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Tech Stack*/}
+        <div className="w-full max-w-7xl">
+          <div className="flex justify-between">
+            <h1 className="text-2xl font-extrabold dark:text-white mb-6">Tech Stack</h1>
+            <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500">Full History<ArrowRight size={16}/></a>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {techStack.map((techStack, i) => (
+              <div key={i} className="flex items-center justify-center rounded-md border border-gray-400 dark:border-gray-700 px-3 py-2 whitespace-nowrap">
+                <span className="font-semibold">{techStack.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div id="project" className="min-h-screen"></div>
+
+      {/* Projects */}
+      <div id="project" className="min-h-screen">
+      </div>
       <div id="contact" className="min-h-screen"></div>
     </div>
   );
