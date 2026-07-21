@@ -1,6 +1,10 @@
 import { useState, useEffect} from 'react'
 import profilePic from './assets/profilepic.png'
-import { Mail, MapPin, Calendar, User, FileText, ArrowRight, Sun, Moon, Menu, X} from 'lucide-react'
+import { Mail, MapPin, Calendar, User, FileText, ArrowRight, Sun, Moon, Menu, X, StarCheck, Globe} from 'lucide-react'
+import weddingInvitation from './assets/wedding-invitation.png'
+import chatbotPrototype from './assets/chatbot-prototype.png'
+import modifiedGame from './assets/2048-modified.png'
+import portfolio from './assets/portfolio.png'
 
 export function GithubIcon({ className }) {
   return(
@@ -45,6 +49,41 @@ const techStack = [
   {title: "React"}, {title: "Tailwind CSS"}, {title: "Godot Engine"}, {title: "C#"}, {title: "Java"}, {title: "C++"}, {title: "Firebase"}, {title: "HTML"},
   {title: "CSS"}, {title: "Javascript"}, {title: "SQL"}, 
 ];
+
+const projects = [
+  {
+    title: "Modified 2048 Game",
+    image: modifiedGame,
+    description: "A digital wedding invitation website for couples to share their special day with family and friends — featuring their love story, event details, entourage, and an RSVP system.",
+    stack: ["HTML", "CSS", "Javascript", "Firebase"],
+    github: "https://github.com/Chicoffee/wedding-invitation",
+    demo: "https://chicoffee.github.io/js-game-ict/",
+  },
+  {
+    title: "Wedding Invitation",
+    image: weddingInvitation,
+    description: "Friend 2048 is a fun and personalized twist on the classic 2048 puzzle game. Instead of merging numbered tiles, players combine pictures of their friends to unlock new faces and progress toward the final image.",
+    stack: ["HTML", "CSS", "Javascript"],
+    github: "https://github.com/Chicoffee/js-game-ict",
+    demo: "https://arwinandjen-wedding.vercel.app/",
+  },
+  {
+    title: "Chatbot Prototype",
+    image: chatbotPrototype,
+    description: "Please meet ISA, Intelligent Student Assistant, that will help you with your concerns and has full cover of the college department's handbook! Mini school project powered by Gemini API model 2.5 flash lite.",
+    stack: ["React", "CSS", "Gemini API"],
+    github: "https://github.com/Chicoffee/chatbot-prototype",
+    demo: "https://chatbot-prototype-shs.netlify.app/",
+  },
+  {
+    title: "Portfolio",
+    image: portfolio,
+    description: "A collection of my projects, achievements, and technical skills, designed to reflect my growth.",
+    stack: ["React", "Tailwind CSS"],
+    github: "https://github.com/Chicoffee/Portfolio",
+    demo: "https://devkohi.vercel.app/",
+  },
+]
 
 function App() {
 
@@ -230,7 +269,62 @@ function App() {
       </div>
 
       {/* Projects */}
-      <div id="project" className="min-h-screen">
+      <div id="project" className="w-full flex flex-col items-center justify-center gap-16 p-8">
+        {/* Projects List */}
+        <div className="w-full max-w-7xl">
+          <h1 className="text-2xl font-extrabold dark:text-white mb-2">Projects</h1>
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mb-8">
+            Explore a collection of projects that demonstrate my skills, creativity, and continuous growth as a developer. More exciting projects will be added as I continue learning and building.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {/* Porject Card */}
+            {projects.map((project,i) => (
+              <div key={i} className="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900">
+
+                {/* Project Image */}
+                <div className="h-48 w-full overflow-hidden bg-gray-950">
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover"/>
+                </div>
+
+                {/* Project Context */}
+                <div className="flex flex-col flex-1 p-5">
+                  <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text=gray-500 dark:text-400 mb-4">
+                    {project.description}
+                  </p>
+
+                  {/* Project Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {project.stack.map((tech, j) => (
+                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Project Links */}
+                  <div className="flex gap-3 mt-auto">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-500 transition-colors rounded-md px-4 py-2 text-sm font-semibold text-gray-800 dark:text-gray-200">
+                      <GithubIcon className="w-4 h-4"/>
+                      Github Repo
+                    </a>
+
+                    {project.demo && (
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-800 hover:bg-blue-900 transition-colors rounded-md px-4 py-2 text-sm font-semibold text-white">
+                        <Globe size={16}/>
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       <div id="contact" className="min-h-screen"></div>
     </div>
