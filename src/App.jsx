@@ -54,7 +54,7 @@ const projects = [
   {
     title: "Modified 2048 Game",
     image: modifiedGame,
-    description: "A digital wedding invitation website for couples to share their special day with family and friends — featuring their love story, event details, entourage, and an RSVP system.",
+    description: "Friend 2048 is a fun and personalized twist on the classic 2048 puzzle game. Instead of merging numbered tiles, players combine pictures of their friends to unlock new faces and progress toward the final image.",
     stack: ["HTML", "CSS", "Javascript", "Firebase"],
     github: "https://github.com/Chicoffee/wedding-invitation",
     demo: "https://chicoffee.github.io/js-game-ict/",
@@ -62,7 +62,7 @@ const projects = [
   {
     title: "Wedding Invitation",
     image: weddingInvitation,
-    description: "Friend 2048 is a fun and personalized twist on the classic 2048 puzzle game. Instead of merging numbered tiles, players combine pictures of their friends to unlock new faces and progress toward the final image.",
+    description: "A digital wedding invitation website for couples to share their special day with family and friends — featuring their love story, event details, entourage, and an RSVP system.",
     stack: ["HTML", "CSS", "Javascript"],
     github: "https://github.com/Chicoffee/js-game-ict",
     demo: "https://arwinandjen-wedding.vercel.app/",
