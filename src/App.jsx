@@ -1,10 +1,12 @@
 import { useState, useEffect} from 'react'
 import profilePic from './assets/profilepic.png'
-import { Mail, MapPin, Calendar, User, FileText, ArrowRight, Sun, Moon, Menu, X, StarCheck, Globe} from 'lucide-react'
+import { Mail, MapPin, Calendar, User, FileText, ArrowRight, MoveRight, Sun, Moon, Menu, X, StarCheck, Globe, ChevronDown} from 'lucide-react'
 import weddingInvitation from './assets/wedding-invitation.png'
 import chatbotPrototype from './assets/chatbot-prototype.png'
 import modifiedGame from './assets/2048-modified.png'
 import portfolio from './assets/portfolio.png'
+import zuittcert from './assets/zuittcert.png'
+import holohub from './assets/holo-hub.png'
 
 export function GithubIcon({ className }) {
   return(
@@ -55,16 +57,16 @@ const projects = [
     title: "Modified 2048 Game",
     image: modifiedGame,
     description: "Friend 2048 is a fun and personalized twist on the classic 2048 puzzle game. Instead of merging numbered tiles, players combine pictures of their friends to unlock new faces and progress toward the final image.",
-    stack: ["HTML", "CSS", "Javascript", "Firebase"],
-    github: "https://github.com/Chicoffee/wedding-invitation",
+    stack: ["HTML", "CSS", "Javascript"],
+    github: "https://github.com/Chicoffee/js-game-ict",
     demo: "https://chicoffee.github.io/js-game-ict/",
   },
   {
     title: "Wedding Invitation",
     image: weddingInvitation,
     description: "A digital wedding invitation website for couples to share their special day with family and friends — featuring their love story, event details, entourage, and an RSVP system.",
-    stack: ["HTML", "CSS", "Javascript"],
-    github: "https://github.com/Chicoffee/js-game-ict",
+    stack: ["HTML", "CSS", "Javascript", "Firebase"],
+    github: "https://github.com/Chicoffee/wedding-invitation",
     demo: "https://arwinandjen-wedding.vercel.app/",
   },
   {
@@ -73,7 +75,7 @@ const projects = [
     description: "Please meet ISA, Intelligent Student Assistant, that will help you with your concerns and has full cover of the college department's handbook! Mini school project powered by Gemini API model 2.5 flash lite.",
     stack: ["React", "CSS", "Gemini API"],
     github: "https://github.com/Chicoffee/chatbot-prototype",
-    demo: "https://chatbot-prototype-shs.netlify.app/",
+    demo: "https://chatbot-prototype-sts.netlify.app/",
   },
   {
     title: "Portfolio",
@@ -82,6 +84,16 @@ const projects = [
     stack: ["React", "Tailwind CSS"],
     github: "https://github.com/Chicoffee/Portfolio",
     demo: "https://devkohi.vercel.app/",
+  },
+]
+
+const wipProjects = [
+    {
+    title: "Holodori Hub",
+    image: holohub,
+    highlight: ["Featured", "Work in Progress"],
+    description: "A community hub for Hololive Dreams players to browse and explore game assets ;ile chibis, gacha banners, cards, songs, and costumes, all in one organized, searchable place. Beyond the database, it's a social space where players can post, share, and discuss the game together.",
+    stack: ["Next.js", "Tailwind CSS", "Supabase"],
   },
 ]
 
@@ -107,41 +119,46 @@ function App() {
     }
   }, [darkMode]);
 
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleProjects = showAll ? projects : projects.slice(0,4);
+
   return( 
     <div className="min-h-screen bg-white dark:bg-gray-950 text-black dark:text-white transition-colors duration-300">
       {/*NavBar*/}
-      <nav className="sticky top-0 left-0 w-full z-50 border-b border-black/10 dark:border-white/10 backdrop-blur-md bg-white/70 dark:bg-gray-950/70 px-6 py-4 transition-colors duration-300">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold md:px-10">Kohi<span className="text-blue-600">.dev</span></h1>
+      <nav className="sticky top-0 left-0 w-full z-50 border-b border-black/10 dark:border-white/20 backdrop-blur-md bg-white/70 dark:bg-gray-950/70 px-6 py-4 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-8">
+          <div className="flex justify-between items-center">
+            <a href="#home" className="text-3xl font-bold md:px-10">Kohi<span className="text-blue-600">.dev</span></a>
 
-          <div className="flex items-center gap-8">
-            {/* Desktop links */}
-            <ul className="hidden md:flex font-bold gap-6 text-xl">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#project">Project</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-            
-            <div className="flex items-center gap-3">
-              {/* Dark mode toggle */}
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                aria-label="Toggle dark mode"
-                className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
+            <div className="flex items-center gap-8">
+              {/* Desktop links */}
+              <ul className="hidden md:flex font-bold gap-6 text-xl">
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              
+              <div className="flex items-center gap-3">
+                {/* Dark mode toggle */}
+                <button
+                  onClick={() => setDarkMode(!darkMode)}
+                  aria-label="Toggle dark mode"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
 
-              {/* Mobile hamburger toggle */}
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                aria-label="Toggle menu"
-                aria-expanded={menuOpen}
-                className="md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              >
-                {menuOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
+                {/* Mobile hamburger toggle */}
+                <button
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  aria-label="Toggle menu"
+                  aria-expanded={menuOpen}
+                  className="md:hidden flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  {menuOpen ? <X size={20} /> : <Menu size={20} />}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -153,7 +170,6 @@ function App() {
           }`}
         >
           <ul className="flex flex-col gap-4 font-bold text-lg pb-2">
-            <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
             <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
             <li><a href="#project" onClick={() => setMenuOpen(false)}>Project</a></li>
             <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
@@ -163,7 +179,7 @@ function App() {
 
       {/*Home section*/}
       <div id="home" className="flex items-center justify-center p-8">
-        <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 items-center border-l-2 border-gray-400 dark:border-gray-700 pl-10 relative">
+        <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 items-center border-l-2 border-gray-400 dark:border-gray-700 pl-10 relative">
           
 
           <div className="order-2 md:order-1">
@@ -173,7 +189,7 @@ function App() {
             <p className='italic font-semibold text-gray-800 dark:text-gray-200 mb-2'>BS Information Systems Student | Freelance Developer</p>
             <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6 max-w-md">
               Aspiring full-stack and game developer passionate about
-              creative, efficient user experiences — from web apps to
+              creative, efficient user experiences from web apps to
               games. I turn ideas into working code.
             </p>
 
@@ -229,63 +245,85 @@ function App() {
 
         </div>
       </div>
+      
+      {/* Work in Progress Projects */}
+      <div className="w-full flex sm:flex-col items-center justify-center gap-16 p-8">
+        <div className="w-full max-w-5xl">
+          {wipProjects.map((wipProj, i) => (
+          <div key={i} className="flex flex-col md:flex-row lg:flex-row gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-black/40 p-3">
 
-      {/* About Section */}
-      <div id="about" className="w-full flex flex-col items-center justify-center gap-16 p-8">
-        {/* Career Background */}
-        <div className="w-full max-w-7xl">
-          <div className="flex justify-between">
-            <h1 className="text-2xl font-extrabold dark:text-white mb-6">Career Background</h1>
-            <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500">Full History<ArrowRight size={16}/></a>
-          </div>
+            {/* (WIP) Project Image */}
+            <div className="h-48 w-full overflow-hidden bg-gray-950 rounded-md">
+              <img src={wipProj.image} alt={wipProj.title} className="w-full h-full object-fit md:object-cover lg:object-cover rounded-md"/>
+            </div>
 
-          <div className="flex flex-col gap-4">
-            {entries.map((entry, i) => (
-              <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:gap-4 border-t-2 border-gray-400 dark:border-gray-700 pt-4">
-                <span className="text-sm font-bold text-gray-800 dark:text-gray-200 w-40 shrink-0">
-                  {entry.date}
-                </span>
-                <span className="text-sm font-bold text-gray-800 dark:text-gray-200 sm:text-right sm:flex-1">{entry.title}</span>
+            {/* (WIP) Project Context */}
+            <div className="flex flex-col flex-1p-5">
+              <div className="flex gap-6">
+                <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
+                  {wipProj.title}
+                </h3>
+
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {wipProj.highlight.map((wipHL, k) => (
+                    <span key={k} className="text-xs font-semibold px-2.5 py-1 rounded-full border border-dashed text-gray-700 dark:text-gray-300">
+                      {wipHL}
+                    </span>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Tech Stack*/}
-        <div className="w-full max-w-7xl">
-          <div className="flex justify-between">
-            <h1 className="text-2xl font-extrabold dark:text-white mb-6">Tech Stack</h1>
-            <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500">Full History<ArrowRight size={16}/></a>
-          </div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                {wipProj.description}
+              </p>
 
-          <div className="flex flex-wrap gap-3">
-            {techStack.map((techStack, i) => (
-              <div key={i} className="flex items-center justify-center rounded-md border border-gray-400 dark:border-gray-700 px-3 py-2 whitespace-nowrap">
-                <span className="font-semibold">{techStack.title}</span>
+              {/* (WIP) Project Tech Stack */}
+              <div className="flex flex-wrap gap-2 mb-5">
+                {wipProj.stack.map((wipTech, j) => (
+                  <span key={j} className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+                    {wipTech}
+                  </span>
+                ))}
               </div>
-            ))}
+
+              {/* (WIP) Project Links */}
+              <div className="flex gap-3 mt-auto">
+                <a href={wipProj.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-500 transition-colors rounded-md px-4 py-2 text-sm font-semibold text-gray-800 dark:text-gray-200">
+                  <GithubIcon className="w-4 h-4"/>
+                  Github Repo
+                </a>
+
+                {wipProj.demo && (
+                  <a href={wipProj.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-800 hover:bg-blue-900 transition-colors rounded-md px-4 py-2 text-sm font-semibold text-white">
+                    <Globe size={16}/>
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
+          ))}
         </div>
       </div>
 
       {/* Projects */}
       <div id="project" className="w-full flex flex-col items-center justify-center gap-16 p-8">
         {/* Projects List */}
-        <div className="w-full max-w-7xl">
+        <div className="w-full max-w-5xl">
           <h1 className="text-2xl font-extrabold dark:text-white mb-2">Projects</h1>
           <p className="text-gray-500 dark:text-gray-400 max-w-2xl mb-8">
             Explore a collection of projects that demonstrate my skills, creativity, and continuous growth as a developer. More exciting projects will be added as I continue learning and building.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
             {/* Porject Card */}
-            {projects.map((project,i) => (
-              <div key={i} className="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900">
+            {visibleProjects.map((project,i) => (
+              <div key={i} className="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-black/40 p-3">
 
                 {/* Project Image */}
                 <div className="h-48 w-full overflow-hidden bg-gray-950">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover"/>
+                  <img src={project.image} alt={project.title} className="w-full h-full object-fit md:object-cover lg:object-cover rounded-md"/>
                 </div>
 
                 {/* Project Context */}
@@ -293,14 +331,14 @@ function App() {
                   <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-sm text=gray-500 dark:text-400 mb-4">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
                     {project.description}
                   </p>
 
                   {/* Project Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-5">
                     {project.stack.map((tech, j) => (
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+                      <span key={j} className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
                         {tech}
                       </span>
                     ))}
@@ -325,8 +363,105 @@ function App() {
             ))}
           </div>
         </div>
+
+        {/* Show all button */}
+        {projects.length > 3 && (
+          <button className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-500 transition-colors rounded-md px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 cursor-pointer">
+          View all projects
+          <MoveRight size={16}/>
+        </button>
+        )}
       </div>
-      <div id="contact" className="min-h-screen"></div>
+
+      {/* About Section */}
+      <div id="about" className="w-full flex flex-col items-center justify-center gap-16 p-8">
+        {/* Career Background */}
+        <div className="w-full max-w-5xl">
+          <div className="flex justify-between">
+            <h1 className="text-2xl font-extrabold dark:text-white mb-6">Career Background</h1>
+            <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500">Full History<MoveRight size={16}/></a>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {entries.map((entry, i) => (
+              <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:gap-4 border-t-2 border-gray-400 dark:border-gray-700 pt-4">
+                <span className="text-sm font-bold text-gray-800 dark:text-gray-200 w-40 shrink-0">
+                  {entry.date}
+                </span>
+                <span className="text-sm font-bold text-gray-800 dark:text-gray-200 sm:text-right sm:flex-1">{entry.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Tech Stack*/}
+        <div className="w-full max-w-5xl">
+          <div className="flex justify-between">
+            <h1 className="text-2xl font-extrabold dark:text-white mb-6">Tech Stack</h1>
+            <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500">Full History<MoveRight size={16}/></a>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {techStack.map((techStack, i) => (
+              <div key={i} className="flex items-center justify-center rounded-md border border-gray-400 dark:border-gray-700 px-3 py-2 whitespace-nowrap">
+                <span className="font-semibold">{techStack.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Contact section */}
+      <div id="contact" className="w-full flex flex-col items-center justify-center gap-16 p-8">
+        <div className="w-full max-w-5xl">
+          <h1 className="text-2xl font-extrabold dark:text-white mb-2">Let's work together.</h1>
+          {/* Link Container */}
+          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start mt-6">
+            <div className="space-y-4">
+              <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base leading-relaxed max-w-xl">
+                Whether you have a project in mind, an opportunity to discuss, or simply want to connect, I'd be happy to hear from you. Feel free to reach out through any of the platforms below, and I'll get back to you as soon as I can.
+              </p>
+            </div>
+            
+            <div className="flex flex-col gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-black dark:hover:shadow-black/40">
+              <a href="mailto:fetalcojohnlenard@gmail.com" className="group flex items-center gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 px-5 py-4 hover:border-gray-400 dark:hover:border-gray-600 transition colors">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 shrink-0">
+                  <Mail size={16}/>
+                </div>
+
+                <div className="flex-1">
+                  <p className="text-xs font-bold tracking-wide text-blue-600 dark:text-blue-400 uppercase">Email</p>
+                  <p className="text-sm font-bold text-gray-900 dark:text-white ">fetalcojohnlenard@gmail.com</p>
+                </div>
+                <MoveRight size={16} className="text-gray-400 group-hover:translate-x-1 transition-colors shrink-0"/>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="w-full flex flex-col items-center justify-center gap-16 p-8">
+        <div className="w-full max-w-5xl border-t border-dashed border-gray-400 dark:border-gray-800">
+          <div className="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-center pt-10">
+            <div>
+              <p className="italic font-semibold text-gray-900 dark:text-gray-400 pb-1">Same as Always</p>
+              <p className="font-bold">Lenard Fetalco | Consistently learning | Bulacan, PH</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} Lenard Fetalco. All rights reserved.</p>
+            </div>
+            
+
+            <div>
+              <ul className="flex gap-5 items-center">
+                <li><a target='_blank' href="https://github.com/Chicoffee"><GithubIcon className="w-5 h-5"/></a></li>
+                <li><a target='_blank' href="www.linkedin.com/in/john-lenard-fetalco-b67303381"><LinkedinIcon className="w-5 h-5"/></a></li>
+                <li><a target='_blank' href="mailto:fetalcojohnlenard@gmail.com "><Mail size={25}/></a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   );
 }
