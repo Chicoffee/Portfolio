@@ -57,7 +57,7 @@ const projects = [
     title: "Modified 2048 Game",
     image: modifiedGame,
     description: "Friend 2048 is a fun and personalized twist on the classic 2048 puzzle game. Instead of merging numbered tiles, players combine pictures of their friends to unlock new faces and progress toward the final image.",
-    stack: ["HTML", "CSS", "Javascript"],
+    stack: ["HTML", "CSS", "Javascript", "Firebase"],
     github: "https://github.com/Chicoffee/js-game-ict",
     demo: "https://chicoffee.github.io/js-game-ict/",
   },
@@ -65,7 +65,7 @@ const projects = [
     title: "Wedding Invitation",
     image: weddingInvitation,
     description: "A digital wedding invitation website for couples to share their special day with family and friends — featuring their love story, event details, entourage, and an RSVP system.",
-    stack: ["HTML", "CSS", "Javascript", "Firebase"],
+    stack: ["HTML", "CSS", "Javascript"],
     github: "https://github.com/Chicoffee/wedding-invitation",
     demo: "https://arwinandjen-wedding.vercel.app/",
   },
@@ -85,6 +85,11 @@ const projects = [
     github: "https://github.com/Chicoffee/Portfolio",
     demo: "https://devkohi.vercel.app/",
   },
+  {
+    title: "Holodori Hub",
+    description: "To be release",
+    stack: ["Next.js", "Tailwind CSS", "Supabase"],
+  },
 ]
 
 const wipProjects = [
@@ -92,7 +97,7 @@ const wipProjects = [
     title: "Holodori Hub",
     image: holohub,
     highlight: ["Featured", "Work in Progress"],
-    description: "A community hub for Hololive Dreams players to browse and explore game assets ;ile chibis, gacha banners, cards, songs, and costumes, all in one organized, searchable place. Beyond the database, it's a social space where players can post, share, and discuss the game together.",
+    description: "A community hub for Hololive Dreams players to browse and explore game assets like chibis, gacha banners, cards, songs, and costumes, all in one organized, searchable place. Beyond the database, it's a social space where players can post, share, and discuss the game together.",
     stack: ["Next.js", "Tailwind CSS", "Supabase"],
   },
 ]
@@ -258,7 +263,7 @@ function App() {
             </div>
 
             {/* (WIP) Project Context */}
-            <div className="flex flex-col flex-1p-5">
+            <div className="flex flex-col flex-1 p-5">
               <div className="flex gap-6">
                 <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
                   {wipProj.title}
@@ -318,8 +323,9 @@ function App() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
             {/* Porject Card */}
+
             {visibleProjects.map((project,i) => (
-              <div key={i} className="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-black/40 p-3">
+              <div key={i} className="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-black/40">
 
                 {/* Project Image */}
                 <div className="h-48 w-full overflow-hidden bg-gray-950">
@@ -365,11 +371,14 @@ function App() {
         </div>
 
         {/* Show all button */}
-        {projects.length > 3 && (
-          <button className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-500 transition-colors rounded-md px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 cursor-pointer">
-          View all projects
-          <MoveRight size={16}/>
-        </button>
+        {projects.length > 4 && (
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-500 transition-colors rounded-md px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 cursor-pointer"
+          >
+            {showAll ? "Show less" : "View all projects"}
+            {showAll ? <ChevronDown size={16}/> : <MoveRight size={16}/>}
+          </button>
         )}
       </div>
 
