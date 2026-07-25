@@ -139,8 +139,8 @@ function App() {
             <div className="flex items-center gap-8">
               {/* Desktop links */}
               <ul className="hidden md:flex font-bold gap-6 text-xl">
-                <li><a href="#about">About</a></li>
                 <li><a href="#project">Project</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
               
@@ -175,8 +175,8 @@ function App() {
           }`}
         >
           <ul className="flex flex-col gap-4 font-bold text-lg pb-2">
-            <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
             <li><a href="#project" onClick={() => setMenuOpen(false)}>Project</a></li>
+            <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
             <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
           </ul>
         </div>
@@ -255,21 +255,21 @@ function App() {
       <div className="w-full flex sm:flex-col items-center justify-center gap-16 p-8">
         <div className="w-full max-w-5xl">
           {wipProjects.map((wipProj, i) => (
-          <div key={i} className="flex flex-col md:flex-row lg:flex-row gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-black/40 p-3">
+          <div key={i} className="flex flex-col md:flex-row gap-4 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-black/40 p-3">
 
             {/* (WIP) Project Image */}
-            <div className="h-48 w-full overflow-hidden bg-gray-950 rounded-md">
-              <img src={wipProj.image} alt={wipProj.title} className="w-full h-full object-fit md:object-cover lg:object-cover rounded-md"/>
+            <div className="h-48 w-full md:w-2/5 md:h-auto shrink-0 overflow-hidden bg-gray-950 rounded-md">
+              <img src={wipProj.image} alt={wipProj.title} className="w-full h-full object-cover"/>
             </div>
 
             {/* (WIP) Project Context */}
             <div className="flex flex-col flex-1 p-5">
-              <div className="flex gap-6">
-                <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <h3 className="order-2 md:order-1 font-bold text-lg text-gray-900 dark:text-white">
                   {wipProj.title}
                 </h3>
 
-                <div className="flex flex-wrap gap-2 mb-2">
+                <div className="order-1 sm:order-2 md:order-2 flex flex-wrap gap-2">
                   {wipProj.highlight.map((wipHL, k) => (
                     <span key={k} className="text-xs font-semibold px-2.5 py-1 rounded-full border border-dashed text-gray-700 dark:text-gray-300">
                       {wipHL}
@@ -328,8 +328,8 @@ function App() {
               <div key={i} className="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-black/40">
 
                 {/* Project Image */}
-                <div className="h-48 w-full overflow-hidden bg-gray-950">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-fit md:object-cover lg:object-cover rounded-md"/>
+                <div className="h-48 w-full overflow-hidden bg-gray-950 rounded-md">
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover rounded-md p-2"/>
                 </div>
 
                 {/* Project Context */}
@@ -373,11 +373,10 @@ function App() {
         {/* Show all button */}
         {projects.length > 4 && (
           <button
-            onClick={() => setShowAll(!showAll)}
             className="flex items-center gap-2 border border-gray-300 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-500 transition-colors rounded-md px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 cursor-pointer"
           >
-            {showAll ? "Show less" : "View all projects"}
-            {showAll ? <ChevronDown size={16}/> : <MoveRight size={16}/>}
+            View all projects
+            <MoveRight size={16}/>
           </button>
         )}
       </div>
@@ -386,9 +385,9 @@ function App() {
       <div id="about" className="w-full flex flex-col items-center justify-center gap-16 p-8">
         {/* Career Background */}
         <div className="w-full max-w-5xl">
-          <div className="flex justify-between">
-            <h1 className="text-2xl font-extrabold dark:text-white mb-6">Career Background</h1>
-            <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500">Full History<MoveRight size={16}/></a>
+          <div className="flex justify-between items-start">
+            <h1 className="text-xl sm:text-2xl font-extrabold dark:text-white mb-6">Career Background</h1>
+            <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500 shrink-0">Full History<MoveRight size={16}/></a>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -405,7 +404,7 @@ function App() {
 
         {/* Tech Stack*/}
         <div className="w-full max-w-5xl">
-          <div className="flex justify-between">
+          <div className="flex justify-between items-start">
             <h1 className="text-2xl font-extrabold dark:text-white mb-6">Tech Stack</h1>
             <a href="" className="flex items-center gap-2 dark:hover:text-gray-700 hover:text-gray-500">Full History<MoveRight size={16}/></a>
           </div>
@@ -453,14 +452,14 @@ function App() {
       <div className="w-full flex flex-col items-center justify-center gap-16 p-8">
         <div className="w-full max-w-5xl border-t border-dashed border-gray-400 dark:border-gray-800">
           <div className="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-center pt-10">
-            <div>
+            <div className="order-2 sm:order-1">
               <p className="italic font-semibold text-gray-900 dark:text-gray-400 pb-1">Same as Always</p>
               <p className="font-bold">Lenard Fetalco | Consistently learning | Bulacan, PH</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">&copy; {new Date().getFullYear()} Lenard Fetalco. All rights reserved.</p>
             </div>
             
 
-            <div>
+            <div className="order-1 sm:order-2">
               <ul className="flex gap-5 items-center">
                 <li><a target='_blank' href="https://github.com/Chicoffee"><GithubIcon className="w-5 h-5"/></a></li>
                 <li><a target='_blank' href="www.linkedin.com/in/john-lenard-fetalco-b67303381"><LinkedinIcon className="w-5 h-5"/></a></li>
