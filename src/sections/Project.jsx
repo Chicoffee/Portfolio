@@ -23,7 +23,7 @@ function Project() {
 
                 {/* Project Image */}
                 <div className="h-48 w-full overflow-hidden bg-gray-950 rounded-md">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover rounded-md p-2"/>
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover"/>
                 </div>
 
                 {/* Project Context */}

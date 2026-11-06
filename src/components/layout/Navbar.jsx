@@ -14,8 +14,8 @@ function Navbar({ darkMode, setDarkMode}) {
             <div className="flex items-center gap-8">
               {/* Desktop links */}
               <ul className="hidden md:flex font-bold gap-6 text-xl">
-                <li><a href="#project">Project</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#project">Project</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
               
@@ -51,8 +51,8 @@ function Navbar({ darkMode, setDarkMode}) {
               : 'h-0 opacity-0 pointer-events-none'
         }`}>
           <ul className="flex flex-col gap-4 font-bold text-lg pb-2">
-            <li><a href="#project" onClick={() => setMenuOpen(false)}>Project</a></li>
             <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
+            <li><a href="#project" onClick={() => setMenuOpen(false)}>Project</a></li>
             <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
           </ul>
         </div>

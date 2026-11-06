@@ -39,8 +39,8 @@ function App() {
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
       <Hero/>
       <WipProject/>
-      <Project/>
       <About/>
+      <Project/>
       <Contact/>
       <Footer/>
     </div>
